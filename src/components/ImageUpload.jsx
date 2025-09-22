@@ -557,7 +557,7 @@ export default function wMapUploadWithCheckpoints() {
       const objectRes = await instance.get(`/admin/object/${id}`);
       setObjectId(objectRes?.data?.id);
       setObjectName(objectRes?.data?.name);
-      setImage(`http://localhost:3003${objectRes?.data?.imageUrl}`);
+      setImage(`${import.meta.env.VITE_BASE_URL}${objectRes?.data?.imageUrl}`);
 
       const res = await instance.get(`/admin/checkpoints`);
       setCheckpoints(res.data.res || []);
@@ -720,7 +720,7 @@ export default function wMapUploadWithCheckpoints() {
       title: "Image",
       render: (_, record) => (
         <img
-          src={`http://localhost:3003${record?.imageUrl}`}
+          src={`${import.meta.env.VITE_BASE_URL}${record?.imageUrl}`}
           alt="zone image"
           className="max-w-16"
         />
